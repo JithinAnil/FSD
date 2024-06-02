@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Calculator</title>
+    <link rel="stylesheet" href="totablecss.css">
+</head>
+<body>
+    <h1>Grade Calculator</h1>
+    
+    <div id="inputGrid">
+        <h2>Enter Marks for Four Subjects</h2>
+        <label>Subject 1: <input type="number" id="subject1" /></label><br>
+        <label>Subject 2: <input type="number" id="subject2" /></label><br>
+        <label>Subject 3: <input type="number" id="subject3" /></label><br>
+        <label>Subject 4: <input type="number" id="subject4" /></label><br>
+        <button onclick="calculateGPA()">Submit</button>
+    </div>
+
+    <div id="resultTable" style="display:none;">
+        <h2>Results</h2>
+        <table>
+            <tr>
+                <th>Subject</th>
+                <th>Mark</th>
+            </tr>
+            <tr>
+                <td>Subject 1</td>
+                <td id="resultSubject1"></td>
+            </tr>
+            <tr>
+                <td>Subject 2</td>
+                <td id="resultSubject2"></td>
+            </tr>
+            <tr>
+                <td>Subject 3</td>
+                <td id="resultSubject3"></td>
+            </tr>
+            <tr>
+                <td>Subject 4</td>
+                <td id="resultSubject4"></td>
+            </tr>
+            <tr>
+                <td><strong>GPA</strong></td>
+                <td id="resultGPA"></td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function calculateGPA() {
+            const subject1 = parseFloat(document.getElementById('subject1').value);
+            const subject2 = parseFloat(document.getElementById('subject2').value);
+            const subject3 = parseFloat(document.getElementById('subject3').value);
+            const subject4 = parseFloat(document.getElementById('subject4').value);
+            const totalSubjects = 4;
+            const totalMarks = subject1 + subject2 + subject3 + subject4;
+            const gpa = totalMarks / totalSubjects;
+            
+            document.getElementById('resultSubject1').textContent = subject1;
+            document.getElementById('resultSubject2').textContent = subject2;
+            document.getElementById('resultSubject3').textContent = subject3;
+            document.getElementById('resultSubject4').textContent = subject4;
+            document.getElementById('resultGPA').textContent = gpa.toFixed(2);
+
+            document.getElementById('inputGrid').style.display = 'none';
+            document.getElementById('resultTable').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
